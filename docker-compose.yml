@@ -1,0 +1,38 @@
+version: '3.9'
+
+services:
+  app:
+    build:
+      context: . # buildを実行する場所
+      dockerfile: ./docker/app/Dockerfile # Dockerファイルの場所
+    volumes:
+      - ./src/:/app # ホスト側./src/をコンテナ側/appにマウント
+
+  web:
+    build:
+      context: . # buildを実行する場所
+      dockerfile: ./docker/web/Dockerfile # Dockerファイルの場所
+    ports:
+      - 8080:80 # ホスト側ポート番号を8080, コンテナ側ポート番号を80に指定
+    depends_on:
+      - app # phpの後にnginxを起動する
+    volumes:
+      - ./src/:/app # ホスト側./src/をコンテナ側/appにマウント
+
+  db:
+    build:
+      context: . # buildを実行する場所
+      dockerfile: ./docker/db/Dockerfile # Dockerファイルの場所
+    ports:
+      - 3306:3306 # ホスト側ポート番号を3306, コンテナ側ポート番号を3306に指定
+    environment: # 環境変数の設定
+      MYSQL_DATABASE: database
+      MYSQL_USER: db-user
+      MYSQL_PASSWORD: password
+      MYSQL_ROOT_PASSWORD: password
+      TZ: 'Asia/Tokyo'
+    volumes:
+      - mysql-volume:/var/lib/mysql # 後述の名前付きボリュームmysql-volumeをコンテナ側/var/lib/mysqlにマウント
+
+volumes: # コンテナを破棄してもデータを永続的に保存できるように、コンテナ外に提供されているデータの保存領域
+  mysql-volume: # 名前付きボリュームを定義
