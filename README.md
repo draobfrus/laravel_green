@@ -2,7 +2,7 @@
 
 ### 使用技術
 
-- PHP 8
+- PHP 8.1.18
 - Laravel 8
 - Nginx 1.24.0
 - MySQL 8
@@ -16,10 +16,10 @@
 git clone git@github.com:draobfrus/docker_laravel.git
 ```
 
-2. コンテナを起動してください。
+2. コンテナを構築&バックグラウンドで起動してください。
 
 ```
-docker compose up -d
+docker compose up -d --build
 ```
 
 3. app コンテナに入ってください。
