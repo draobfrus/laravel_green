@@ -1,35 +1,10 @@
-## LEMP 環境構築 備忘録
+## Laravel Green
+「PHPフレームワークLaravel実践開発」用プロジェクト
 
 ### 使用技術
 
-- PHP 8.1.18
-- Laravel 8
-- Nginx 1.24.0
-- MySQL 8
+- PHP 7.4
+- Laravel 5.7
+- Nginx 1.19.0
+- MySQL 5.7
 - Docker docker-compose 2.13.0
-
-### 構築手順
-
-1. このリポジトリをクローンしてください。
-
-```
-git clone git@github.com:draobfrus/docker_laravel.git
-```
-
-2. コンテナを構築&バックグラウンドで起動してください。
-
-```
-docker compose up -d --build
-```
-
-3. app コンテナに入ってください。
-
-```
-docker compose exec app bash
-```
-
-4. app コンテナに入った状態で、Laravel プロジェクトを立ち上げてください。
-
-```
-composer create-project --prefer-dist "laravel/laravel=8.*" .
-```

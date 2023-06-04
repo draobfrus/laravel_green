@@ -1,6 +1,6 @@
 # MySQLのPHPの公式イメージを指定
 # apt-get出来る様にdebian版を使う。
-FROM mysql:8.0-debian
+FROM mysql:5.7-debian
 
 # コンテナ内で日本語が打てるようにlocalを変更、いらないファイル削除
 RUN apt-get update \

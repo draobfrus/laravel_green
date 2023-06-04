@@ -1,5 +1,5 @@
 # nginxのPHPの公式イメージを指定（alpineは軽量）
-FROM nginx:1.24.0-alpine
+FROM nginx:1.19-alpine
 
 # コンテナのタイムゾーンを指定
 ENV TZ Asia/Tokyo
