@@ -11,7 +11,5 @@
 |
 */
 
-Route::get('/hello/{id}', 'HelloController@index')->where('id', '[0-9]+');
 Route::get('/hello/other', 'HelloController@other');
-
-
+Route::get('/hello', 'HelloController@index')->name('hello');
